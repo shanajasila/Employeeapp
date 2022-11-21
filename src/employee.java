@@ -34,7 +34,16 @@ public class employee {
                     break;
                 case 2:
                     System.out.println(emplist);
-
+                    break;
+                case 3:
+                    System.out.println("Enter employee code");
+                    int c= sc.nextInt();
+                    if(emplist.contains(c)) {
+                        System.out.println("Employee found");
+                    }
+                    else{
+                        System.out.println("Employee not found");
+                    }
             }
         }
     }
