@@ -1,11 +1,24 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class employee {
+    int code;
+    String name,designation,cmpname;
+    long phone;
+    double salary;
+
+    public employee(int code, String name, String designation, String cmpname, long phone,double salary) {
+        this.code = code;
+        this.name = name;
+        this.designation = designation;
+        this.cmpname = cmpname;
+        this.phone = phone;
+        this.salary = salary;
+    }
 
     public static void main(String args[]){
-        ArrayList emplist=new ArrayList<>();
+        ArrayList<employee> emplist=new ArrayList<employee>();
         while (true){
-            System.out.println("Select the options");
+            System.out.println("Select the options\n");
             Scanner sc=new Scanner(System.in);
             System.out.println("1.Add Employee\n2.View Employee\n3.Search Employee\n4.Delete Employee\n5.Exit");
             int men= sc.nextInt();
@@ -24,26 +37,58 @@ public class employee {
                     System.out.println("Enter Phone number");
                     long ph=sc.nextLong();
 
-                    emplist.add(code);
-                    emplist.add(name);
-                    emplist.add(salary);
-                    emplist.add(desig);
-                    emplist.add(cmpname);
-                    emplist.add(ph);
-
+                    employee emp=new employee(code,name,desig,cmpname,ph,salary);
+                    emplist.add(emp);
                     break;
                 case 2:
-                    System.out.println(emplist);
+                    for (employee e :emplist) {
+                        System.out.println(e.code);
+                        System.out.println(e.name);
+                        System.out.println(e.designation);
+                        System.out.println(e.cmpname);
+                        System.out.println(e.salary);
+                        System.out.println(e.phone);
+                    }
                     break;
                 case 3:
                     System.out.println("Enter employee code");
                     int c= sc.nextInt();
-                    if(emplist.contains(c)) {
-                        System.out.println("Employee found");
+                    int flag=0;
+                    for(employee e2 :emplist) {
+                        if (e2.code == c) {
+                            System.out.println("\nEmployee found\n");
+                            System.out.println(e2.code);
+                            System.out.println(e2.name);
+                            System.out.println(e2.designation);
+                            System.out.println(e2.cmpname);
+                            System.out.println(e2.salary);
+                            System.out.println(e2.phone);
+                            flag = 1;
+                        }
                     }
-                    else{
-                        System.out.println("Employee not found");
+                    if(flag==0){
+                            System.out.println("Employee not found");
+                        }
+                    break;
+                case 4:
+                    System.out.println("Enter employee code");
+                    int a= sc.nextInt();
+                    for (employee e1 :emplist){
+                        if(a==e1.code){
+                            emplist.remove(e1);
+                        }
                     }
+                    break;
+                case 5:
+                    System.exit(0);
+                default:
+                    System.out.println("please select from options");
+                    break;
+
+
+
+
+
             }
         }
     }
