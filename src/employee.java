@@ -31,6 +31,9 @@ public class employee {
                     emplist.add(cmpname);
                     emplist.add(ph);
 
+                    break;
+                case 2:
+                    System.out.println(emplist);
 
             }
         }
